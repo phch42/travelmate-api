@@ -1,4 +1,6 @@
 import CountryCard from "../CountryCard/CountryCard";
+import { useFetch } from "../../hooks/useFetch";
+import type { Country } from "../../types/travel";
 import {
     CountriesGrid,
     SectionHeader,
@@ -7,6 +9,10 @@ import {
 } from "../../styles/PopularCountries.styled";
 
 function PopularCountries() {
+    const { data } = useFetch<Country[]>(
+        "http://localhost:4000/api/countries"
+    );
+
     return (
         <section>
             <SectionHeader>
@@ -18,35 +24,20 @@ function PopularCountries() {
             </SectionHeader>
 
             <CountriesGrid>
-                <CountryCard
-                    name="Italy"
-                    description="Historic cities, great food and beautiful coastlines."
-                    flag="🇮🇹"
-                />
+                {data?.slice(0, 5).map((country) => {
+                    const info = country.infos.find(
+                        (info) => info.language.code === "en"
+                    );
 
-                <CountryCard
-                    name="France"
-                    description="Art, culture, charming cities and unforgettable cuisine."
-                    flag="🇫🇷"
-                />
-
-                <CountryCard
-                    name="Spain"
-                    description="Sunny beaches, vibrant cities and rich traditions."
-                    flag="🇪🇸"
-                />
-
-                <CountryCard
-                    name="Denmark"
-                    description="Scandinavian design, cozy cities and beautiful nature."
-                    flag="🇩🇰"
-                />
-
-                <CountryCard
-                    name="Germany"
-                    description="Historic landmarks, modern cities and stunning landscapes."
-                    flag="🇩🇪"
-                />
+                    return (
+                        <CountryCard
+                            key={country.id}
+                            name={info?.name ?? ""}
+                            description={info?.description ?? ""}
+                            flag={country.code}
+                        />
+                    );
+                })}
             </CountriesGrid>
         </section>
     );
