@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const HeaderWrapper = styled.header`
     height: 40px;
@@ -9,6 +9,28 @@ export const HeaderWrapper = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 60px;
+`;
+
+export const Brand = styled(Link)`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: ${({ theme }) => theme.colors.navy};
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+
+    svg {
+        color: ${({ theme }) => theme.colors.navy};
+        
+    }
+
+    span span {
+        color: ${({ theme }) => theme.colors.blue};
+    }
 `;
 
 export const Nav = styled.nav`
