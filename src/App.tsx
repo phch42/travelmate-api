@@ -1,15 +1,9 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Router from "./Router";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
 
   return (
-    <>
-    <Header />
-    <Router />
-    <Footer />
-    </>
+    <MainLayout />
   )
 }
 
