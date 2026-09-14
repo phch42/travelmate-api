@@ -25,7 +25,6 @@ export const Brand = styled(Link)`
 
     svg {
         color: ${({ theme }) => theme.colors.navy};
-        
     }
 
     span span {
@@ -62,4 +61,42 @@ export const StyledNavLink = styled(NavLink)`
         background: ${({ theme }) => theme.colors.lightBlue};
         color: ${({ theme }) => theme.colors.blue};
     }
+`;
+
+export const ThemeToggle = styled.div`
+    display: flex;
+    align-items: center;
+
+    padding: 2px;
+    gap: 2px;
+
+    background: ${({ theme }) => theme.colors.background};
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    border-radius: ${({ theme }) => theme.radius.small};
+`;
+
+export const ThemeOption = styled.button<{ $active: boolean }>`
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    padding: 4px 7px;
+    border: none;
+    border-radius: 4px;
+
+    background: ${({ theme, $active }) =>
+        $active ? theme.colors.surface : "transparent"};
+
+    color: ${({ theme, $active }) =>
+        $active ? theme.colors.blue : theme.colors.muted};
+
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 `;

@@ -1,4 +1,12 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import {
+    createContext,
+    useContext,
+    useState,
+    type ReactNode,
+} from "react";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
+import { darkTheme, theme } from "../styles/theme";
+import { GlobalStyle } from "../styles/GlobalStyle";
 
 type ThemeMode = "light" | "dark";
 
@@ -14,17 +22,27 @@ type ThemeProviderProps = {
 };
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-    const [theme, setTheme] = useState<ThemeMode>("light");
+    const [themeMode, setThemeMode] = useState<ThemeMode>("light");
 
     const toggleTheme = () => {
-        setTheme(currentTheme =>
+        setThemeMode((currentTheme) =>
             currentTheme === "light" ? "dark" : "light"
         );
     };
 
+    const currentTheme = themeMode === "dark" ? darkTheme : theme;
+
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            {children}
+        <ThemeContext.Provider
+            value={{
+                theme: themeMode,
+                toggleTheme,
+            }}
+        >
+            <StyledThemeProvider theme={currentTheme}>
+                <GlobalStyle />
+                {children}
+            </StyledThemeProvider>
         </ThemeContext.Provider>
     );
 }

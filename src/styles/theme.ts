@@ -35,4 +35,19 @@ export const theme = {
     },
 };
 
+export const darkTheme = {
+    ...theme,
+
+    colors: {
+        ...theme.colors,
+
+        navy: "#E8F1F8",
+        text: "#E8F1F8",
+        muted: "#A8B6C4",
+        background: "#101C2A",
+        surface: "#172638",
+        border: "#2A3B4D",
+    },
+};
+
 export type Theme = typeof theme;

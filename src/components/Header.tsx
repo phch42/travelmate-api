@@ -1,13 +1,25 @@
-import { Link } from "react-router-dom";
-import { Plane } from "lucide-react";
-import { Brand, StyledNavLink, HeaderWrapper, Nav } from "../styles/Header.styled";
+import { Moon, Plane, Sun } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
+import {
+    Brand,
+    HeaderWrapper,
+    Nav,
+    StyledNavLink,
+    ThemeOption,
+    ThemeToggle,
+} from "../styles/Header.styled";
 
 function Header() {
+    const { theme, toggleTheme } = useTheme();
+
     return (
         <HeaderWrapper>
             <Brand to="/">
                 <Plane size={24} />
-                <span>Travel<span>Mate</span></span>
+
+                <span>
+                    Travel<span>Mate</span>
+                </span>
             </Brand>
 
             <Nav>
@@ -17,6 +29,24 @@ function Header() {
                 <StyledNavLink to="/places">Places</StyledNavLink>
                 <StyledNavLink to="/about">About</StyledNavLink>
             </Nav>
+
+            <ThemeToggle>
+                <ThemeOption
+                    $active={theme === "light"}
+                    onClick={() => theme !== "light" && toggleTheme()}
+                >
+                    <Sun size={14} />
+                    Light
+                </ThemeOption>
+
+                <ThemeOption
+                    $active={theme === "dark"}
+                    onClick={() => theme !== "dark" && toggleTheme()}
+                >
+                    <Moon size={14} />
+                    Dark
+                </ThemeOption>
+            </ThemeToggle>
         </HeaderWrapper>
     );
 }
