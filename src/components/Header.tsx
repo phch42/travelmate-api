@@ -8,6 +8,7 @@ function Header() {
                 <StyledNavLink to="/countries">Countries</StyledNavLink>
                 <StyledNavLink to="/cities">Cities</StyledNavLink>
                 <StyledNavLink to="/places">Places</StyledNavLink>
+                <StyledNavLink to="/about">About</StyledNavLink>
             </Nav>
         </HeaderWrapper>
     );

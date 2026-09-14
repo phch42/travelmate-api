@@ -4,6 +4,7 @@ import Countries from "./pages/Countries";
 import Cities from "./pages/Cities";
 import Places from "./pages/Places";
 import CityDetails from "./pages/CityDetails";
+import About from "./pages/About";
 
 function Router() {
     return (
@@ -13,6 +14,7 @@ function Router() {
                 <Route path="/cities" element={<Cities />} />
                 <Route path="/places" element={<Places />} />
                 <Route path="/city/:id" element={<CityDetails />} />
+                <Route path="/about" element={<About />} />
             </Routes>
     )
 }
