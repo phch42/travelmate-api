@@ -1,7 +1,7 @@
 import {
     CountryCardWrapper,
     CountryDescription,
-    CountryFlag,
+    CountryImage,
     CountryInfo,
     CountryName,
 } from "../../styles/CountryCard.styled";
@@ -9,22 +9,24 @@ import {
 type CountryCardProps = {
     name: string;
     description: string;
-    flag: string;
+    image: string;
 };
 
 function CountryCard({
     name,
     description,
-    flag,
+    image,
 }: CountryCardProps) {
     return (
         <CountryCardWrapper>
-            <CountryFlag aria-label={`${name} flag`}>
-                {flag}
-            </CountryFlag>
+            <CountryImage
+                src={`http://localhost:4000${image}`}
+                alt={`${name} flag`}
+            />
 
             <CountryInfo>
                 <CountryName>{name}</CountryName>
+
                 <CountryDescription>
                     {description}
                 </CountryDescription>

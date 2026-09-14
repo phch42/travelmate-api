@@ -34,7 +34,7 @@ function PopularCountries() {
                             key={country.id}
                             name={info?.name ?? ""}
                             description={info?.description ?? ""}
-                            flag={country.code}
+                            image={country.image}
                         />
                     );
                 })}
