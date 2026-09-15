@@ -22,9 +22,11 @@ function CountryCard({
     code,
     flagCode,
 }: CountryCardProps) {
+    const sentenceEnd = description.search(/[.!?]/);
+
     const shortDescription =
-        description.length > 65
-            ? `${description.slice(0, 65)}...`
+        description.length > 80 && sentenceEnd !== -1
+            ? `${description.slice(0, sentenceEnd + 1)}...`
             : description;
 
     return (
