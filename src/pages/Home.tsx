@@ -1,3 +1,4 @@
+import FeaturedPlaces from "../components/FeaturedPlaces/FeaturedPlaces";
 import Hero from "../components/Hero/Hero";
 import PopularCities from "../components/PopularCities/PopularCities";
 import PopularCountries from "../components/PopularCountries/PopularCountries";
@@ -8,6 +9,7 @@ function Home() {
             <Hero />
             <PopularCountries />
             <PopularCities />
+            <FeaturedPlaces />
         </>
     );
 }
