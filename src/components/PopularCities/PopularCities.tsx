@@ -1,5 +1,6 @@
 import CityCard from "../CityCard/CityCard";
 import { useFetch } from "../../hooks/useFetch";
+import { useLanguage } from "../../contexts/LanguageContext";
 import type { City, Country } from "../../types/travel";
 import {
     CitiesGrid,
@@ -9,6 +10,8 @@ import {
 } from "../../styles/PopularCities.styled";
 
 function PopularCities() {
+    const { selectedLanguage } = useLanguage();
+
     const { data: cities } = useFetch<City[]>(
         "http://localhost:4000/api/cities"
     );
@@ -30,15 +33,20 @@ function PopularCities() {
             <CitiesGrid>
                 {cities?.slice(0, 5).map((city) => {
                     const info = city.infos.find(
-                        (info) => info.language.code === "en"
+                        (info) =>
+                            info.languageId ===
+                            selectedLanguage?.id
                     );
 
                     const country = countries?.find(
-                        (country) => country.id === city.countryId
+                        (country) =>
+                            country.id === city.countryId
                     );
 
                     const countryInfo = country?.infos.find(
-                        (info) => info.language.code === "en"
+                        (info) =>
+                            info.languageId ===
+                            selectedLanguage?.id
                     );
 
                     return (

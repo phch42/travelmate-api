@@ -1,5 +1,6 @@
 import CountryCard from "../CountryCard/CountryCard";
 import { useFetch } from "../../hooks/useFetch";
+import { useLanguage } from "../../contexts/LanguageContext";
 import type { Country } from "../../types/travel";
 import {
     CountriesGrid,
@@ -9,6 +10,8 @@ import {
 } from "../../styles/PopularCountries.styled";
 
 function PopularCountries() {
+    const { selectedLanguage } = useLanguage();
+
     const { data: countries } = useFetch<Country[]>(
         "http://localhost:4000/api/countries"
     );
@@ -26,7 +29,9 @@ function PopularCountries() {
             <CountriesGrid>
                 {countries?.slice(0, 5).map((country) => {
                     const info = country.infos.find(
-                        (info) => info.language.code === "en"
+                        (info) =>
+                            info.languageId ===
+                            selectedLanguage?.id
                     );
 
                     return (

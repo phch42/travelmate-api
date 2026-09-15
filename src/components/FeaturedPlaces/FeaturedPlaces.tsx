@@ -1,5 +1,6 @@
 import AttractionCard from "../AttractionCard/AttractionCard";
 import { useFetch } from "../../hooks/useFetch";
+import { useLanguage } from "../../contexts/LanguageContext";
 import type {
     Attraction,
     AttractionListItem,
@@ -13,6 +14,8 @@ import {
 } from "../../styles/FeaturedPlaces.styled";
 
 function FeaturedPlaces() {
+    const { selectedLanguage } = useLanguage();
+
     const { data: attractions } = useFetch<AttractionListItem[]>(
         "http://localhost:4000/api/attractions"
     );
@@ -69,15 +72,20 @@ function FeaturedPlaces() {
                     const details = attractionDetails?.[index];
 
                     const attractionInfo = details?.infos.find(
-                        (info) => info.languageId === 2
+                        (info) =>
+                            info.languageId ===
+                            selectedLanguage?.id
                     );
 
                     const city = cities?.find(
-                        (city) => city.id === attraction.cityId
+                        (city) =>
+                            city.id === attraction.cityId
                     );
 
                     const cityInfo = city?.infos.find(
-                        (info) => info.languageId === 2
+                        (info) =>
+                            info.languageId ===
+                            selectedLanguage?.id
                     );
 
                     const category = categories[index];
