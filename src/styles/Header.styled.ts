@@ -5,11 +5,17 @@ export const HeaderWrapper = styled.header`
     height: 40px;
     background: ${({ theme }) => theme.colors.surface};
     border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+`;
 
-    display: flex;
+export const HeaderContent = styled.div`
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: center;
-    gap: 60px;
+
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
 `;
 
 export const Brand = styled(Link)`
@@ -66,6 +72,7 @@ export const StyledNavLink = styled(NavLink)`
 export const ThemeToggle = styled.div`
     display: flex;
     align-items: center;
+    justify-self: end;
 
     padding: 2px;
     gap: 2px;
