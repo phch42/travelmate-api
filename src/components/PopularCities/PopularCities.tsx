@@ -10,7 +10,8 @@ import {
 } from "../../styles/PopularCities.styled";
 
 function PopularCities() {
-    const { selectedLanguage } = useLanguage();
+    const { selectedLanguage, translations } =
+        useLanguage();
 
     const { data: cities } = useFetch<City[]>(
         "http://localhost:4000/api/cities"
@@ -23,10 +24,12 @@ function PopularCities() {
     return (
         <section>
             <SectionHeader>
-                <SectionTitle>Popular Cities</SectionTitle>
+                <SectionTitle>
+                    {translations.sections.popularCities}
+                </SectionTitle>
 
                 <ViewAllLink to="/cities">
-                    View all
+                    {translations.sections.viewAll}
                 </ViewAllLink>
             </SectionHeader>
 

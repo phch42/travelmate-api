@@ -1,4 +1,5 @@
 import { Moon, Plane, Sun } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 import { useTheme } from "../contexts/ThemeContext";
 import LanguageSelector from "./LanguageSelector/LanguageSelector";
 import {
@@ -14,6 +15,7 @@ import {
 
 function Header() {
     const { theme, toggleTheme } = useTheme();
+    const { translations } = useLanguage();
 
     return (
         <HeaderWrapper>
@@ -28,23 +30,23 @@ function Header() {
 
                 <Nav>
                     <StyledNavLink to="/">
-                        Home
+                        {translations.navigation.home}
                     </StyledNavLink>
 
                     <StyledNavLink to="/countries">
-                        Countries
+                        {translations.navigation.countries}
                     </StyledNavLink>
 
                     <StyledNavLink to="/cities">
-                        Cities
+                        {translations.navigation.cities}
                     </StyledNavLink>
 
                     <StyledNavLink to="/places">
-                        Places
+                        {translations.navigation.places}
                     </StyledNavLink>
 
                     <StyledNavLink to="/about">
-                        About
+                        {translations.navigation.about}
                     </StyledNavLink>
                 </Nav>
 
@@ -60,7 +62,7 @@ function Header() {
                             }
                         >
                             <Sun size={14} />
-                            Light
+                            {translations.theme.light}
                         </ThemeOption>
 
                         <ThemeOption
@@ -71,7 +73,7 @@ function Header() {
                             }
                         >
                             <Moon size={14} />
-                            Dark
+                            {translations.theme.dark}
                         </ThemeOption>
                     </ThemeToggle>
                 </HeaderActions>

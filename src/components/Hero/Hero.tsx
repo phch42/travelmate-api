@@ -1,3 +1,4 @@
+import { useLanguage } from "../../contexts/LanguageContext";
 import {
     HeroContent,
     HeroDecoration,
@@ -10,36 +11,40 @@ import {
 } from "../../styles/Hero.styled";
 
 function Hero() {
+    const { translations } = useLanguage();
+
     return (
         <HeroSection>
             <HeroContent>
                 <HeroTitle>
-                    Explore the World
+                    {translations.hero.title}
                     <br />
-                    with TravelMate
+                    {translations.hero.titleLineTwo}
                 </HeroTitle>
 
                 <HeroSubtitle>
-                   Discover countries, cities and amazing places around the world.
-                   <br />
-                   Your next adventure is just a click away.
+                    {translations.hero.subtitle}
+                    <br />
+                    {translations.hero.subtitleLineTwo}
                 </HeroSubtitle>
 
                 <SearchForm>
                     <SearchInput
                         type="text"
-                        placeholder="Search for countries, cities or places..."
+                        placeholder={
+                            translations.hero.searchPlaceholder
+                        }
                     />
 
                     <SearchButton type="submit">
-                        Search
+                        {translations.hero.searchButton}
                     </SearchButton>
                 </SearchForm>
             </HeroContent>
 
             <HeroDecoration>
-                <span>Good places</span>
-                <span>Brighter days</span>
+                <span>{translations.hero.decorationOne}</span>
+                <span>{translations.hero.decorationTwo}</span>
             </HeroDecoration>
         </HeroSection>
     );

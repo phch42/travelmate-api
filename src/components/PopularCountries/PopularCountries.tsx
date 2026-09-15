@@ -10,7 +10,8 @@ import {
 } from "../../styles/PopularCountries.styled";
 
 function PopularCountries() {
-    const { selectedLanguage } = useLanguage();
+    const { selectedLanguage, translations } =
+        useLanguage();
 
     const { data: countries } = useFetch<Country[]>(
         "http://localhost:4000/api/countries"
@@ -19,10 +20,12 @@ function PopularCountries() {
     return (
         <section>
             <SectionHeader>
-                <SectionTitle>Popular Countries</SectionTitle>
+                <SectionTitle>
+                    {translations.sections.popularCountries}
+                </SectionTitle>
 
                 <ViewAllLink to="/countries">
-                    View all
+                    {translations.sections.viewAll}
                 </ViewAllLink>
             </SectionHeader>
 
@@ -38,7 +41,9 @@ function PopularCountries() {
                         <CountryCard
                             key={country.id}
                             name={info?.name ?? ""}
-                            description={info?.description ?? ""}
+                            description={
+                                info?.description ?? ""
+                            }
                             image={country.image}
                             code={country.code}
                         />

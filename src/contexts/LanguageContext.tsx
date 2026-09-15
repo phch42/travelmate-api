@@ -6,6 +6,7 @@ import {
 } from "react";
 import { useFetch } from "../hooks/useFetch";
 import type { Language as ApiLanguage } from "../types/travel";
+import { translations } from "../translations/translations";
 
 type Language = "en" | "da";
 
@@ -13,6 +14,7 @@ type LanguageContextType = {
     language: Language;
     setLanguage: (language: Language) => void;
     selectedLanguage: ApiLanguage | undefined;
+    translations: typeof translations.en;
 };
 
 const LanguageContext = createContext<
@@ -37,12 +39,15 @@ export function LanguageProvider({
         (item) => item.code === language
     );
 
+    const currentTranslations = translations[language];
+
     return (
         <LanguageContext.Provider
             value={{
                 language,
                 setLanguage,
                 selectedLanguage,
+                translations: currentTranslations,
             }}
         >
             {children}
