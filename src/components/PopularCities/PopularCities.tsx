@@ -1,4 +1,6 @@
 import CityCard from "../CityCard/CityCard";
+import { useFetch } from "../../hooks/useFetch";
+import type { City, Country } from "../../types/travel";
 import {
     CitiesGrid,
     SectionHeader,
@@ -7,6 +9,14 @@ import {
 } from "../../styles/PopularCities.styled";
 
 function PopularCities() {
+    const { data: cities } = useFetch<City[]>(
+        "http://localhost:4000/api/cities"
+    );
+
+    const { data: countries } = useFetch<Country[]>(
+        "http://localhost:4000/api/countries"
+    );
+
     return (
         <section>
             <SectionHeader>
@@ -18,30 +28,28 @@ function PopularCities() {
             </SectionHeader>
 
             <CitiesGrid>
-                <CityCard
-                    name="Rome"
-                    country="Italy"
-                />
+                {cities?.slice(0, 5).map((city) => {
+                    const info = city.infos.find(
+                        (info) => info.language.code === "en"
+                    );
 
-                <CityCard
-                    name="Paris"
-                    country="France"
-                />
+                    const country = countries?.find(
+                        (country) => country.id === city.countryId
+                    );
 
-                <CityCard
-                    name="Barcelona"
-                    country="Spain"
-                />
+                    const countryInfo = country?.infos.find(
+                        (info) => info.language.code === "en"
+                    );
 
-                <CityCard
-                    name="Copenhagen"
-                    country="Denmark"
-                />
-
-                <CityCard
-                    name="Berlin"
-                    country="Germany"
-                />
+                    return (
+                        <CityCard
+                            key={city.id}
+                            name={info?.name ?? ""}
+                            country={countryInfo?.name ?? ""}
+                            image={city.image}
+                        />
+                    );
+                })}
             </CitiesGrid>
         </section>
     );

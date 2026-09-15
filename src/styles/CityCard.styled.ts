@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CityCardWrapper = styled.article`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
 
     min-height: 88px;
     padding: 10px;
@@ -23,8 +23,19 @@ export const CityCardWrapper = styled.article`
     }
 `;
 
+export const CityImage = styled.img`
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+    border-radius: ${({ theme }) => theme.radius.small};
+`;
+
 export const CityInfo = styled.div`
     min-width: 0;
+    flex: 1;
 `;
 
 export const CityName = styled.h3`
@@ -48,14 +59,11 @@ export const CityLocation = styled.p`
     line-height: 1.2;
 `;
 
-export const CityIcon = styled.span`
-    display: flex;
-    align-items: center;
-`;
-
 export const CityArrow = styled.span`
     display: flex;
     align-items: center;
+
+    flex-shrink: 0;
 
     color: ${({ theme }) => theme.colors.muted};
 `;

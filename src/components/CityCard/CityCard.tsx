@@ -1,29 +1,36 @@
-import { MapPin, ChevronRight } from "lucide-react";
+import { ChevronRight, MapPin } from "lucide-react";
 import {
-    CityCardWrapper,
-    CityInfo,
-    CityName,
-    CityLocation,
-    CityIcon,
     CityArrow,
+    CityCardWrapper,
+    CityImage,
+    CityInfo,
+    CityLocation,
+    CityName,
 } from "../../styles/CityCard.styled";
 
 type CityCardProps = {
     name: string;
     country: string;
+    image: string;
 };
 
-function CityCard({ name, country }: CityCardProps) {
+function CityCard({
+    name,
+    country,
+    image,
+}: CityCardProps) {
     return (
         <CityCardWrapper>
+            <CityImage
+                src={`http://localhost:4000${image}`}
+                alt={name}
+            />
+
             <CityInfo>
                 <CityName>{name}</CityName>
 
                 <CityLocation>
-                    <CityIcon>
-                        <MapPin size={10} />
-                    </CityIcon>
-
+                    <MapPin size={10} />
                     {country}
                 </CityLocation>
             </CityInfo>
