@@ -1,12 +1,7 @@
 import styled from "styled-components";
 
 export const CountryCardWrapper = styled.article`
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    min-height: 88px;
-    padding: 10px;
+    overflow: hidden;
 
     background: ${({ theme }) => theme.colors.surface};
     border: 1px solid ${({ theme }) => theme.colors.border};
@@ -15,20 +10,23 @@ export const CountryCardWrapper = styled.article`
 `;
 
 export const CountryImage = styled.img`
-    width: 58px;
-    height: 58px;
+    display: block;
 
-    flex-shrink: 0;
+    width: 100%;
+    height: 120px;
 
     object-fit: cover;
-    border-radius: ${({ theme }) => theme.radius.small};
 `;
 
 export const CountryInfo = styled.div`
-    min-width: 0;
+    padding: 10px;
 `;
 
 export const CountryName = styled.h3`
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
     margin: 0 0 4px;
 
     color: ${({ theme }) => theme.colors.navy};
@@ -43,4 +41,12 @@ export const CountryDescription = styled.p`
     color: ${({ theme }) => theme.colors.muted};
     font-size: 9px;
     line-height: 1.35;
+`;
+
+export const CountryFlag = styled.img`
+    width: 20px;
+    height: 14px;
+
+    object-fit: cover;
+    border-radius: 2px;
 `;

@@ -9,7 +9,7 @@ import {
 } from "../../styles/PopularCountries.styled";
 
 function PopularCountries() {
-    const { data } = useFetch<Country[]>(
+    const { data: countries } = useFetch<Country[]>(
         "http://localhost:4000/api/countries"
     );
 
@@ -24,7 +24,7 @@ function PopularCountries() {
             </SectionHeader>
 
             <CountriesGrid>
-                {data?.slice(0, 5).map((country) => {
+                {countries?.slice(0, 5).map((country) => {
                     const info = country.infos.find(
                         (info) => info.language.code === "en"
                     );
@@ -35,6 +35,7 @@ function PopularCountries() {
                             name={info?.name ?? ""}
                             description={info?.description ?? ""}
                             image={country.image}
+                            code={country.code}
                         />
                     );
                 })}
