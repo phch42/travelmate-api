@@ -1,7 +1,9 @@
 import { Moon, Plane, Sun } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
+import LanguageSelector from "./LanguageSelector/LanguageSelector";
 import {
     Brand,
+    HeaderActions,
     HeaderContent,
     HeaderWrapper,
     Nav,
@@ -18,40 +20,61 @@ function Header() {
             <HeaderContent>
                 <Brand to="/">
                     <Plane size={24} />
+
                     <span>
                         Travel<span>Mate</span>
                     </span>
                 </Brand>
 
                 <Nav>
-                    <StyledNavLink to="/">Home</StyledNavLink>
-                    <StyledNavLink to="/countries">Countries</StyledNavLink>
-                    <StyledNavLink to="/cities">Cities</StyledNavLink>
-                    <StyledNavLink to="/places">Places</StyledNavLink>
-                    <StyledNavLink to="/about">About</StyledNavLink>
+                    <StyledNavLink to="/">
+                        Home
+                    </StyledNavLink>
+
+                    <StyledNavLink to="/countries">
+                        Countries
+                    </StyledNavLink>
+
+                    <StyledNavLink to="/cities">
+                        Cities
+                    </StyledNavLink>
+
+                    <StyledNavLink to="/places">
+                        Places
+                    </StyledNavLink>
+
+                    <StyledNavLink to="/about">
+                        About
+                    </StyledNavLink>
                 </Nav>
 
-                <ThemeToggle>
-                    <ThemeOption
-                        $active={theme === "light"}
-                        onClick={() =>
-                            theme !== "light" && toggleTheme()
-                        }
-                    >
-                        <Sun size={14} />
-                        Light
-                    </ThemeOption>
+                <HeaderActions>
+                    <LanguageSelector />
 
-                    <ThemeOption
-                        $active={theme === "dark"}
-                        onClick={() =>
-                            theme !== "dark" && toggleTheme()
-                        }
-                    >
-                        <Moon size={14} />
-                        Dark
-                    </ThemeOption>
-                </ThemeToggle>
+                    <ThemeToggle>
+                        <ThemeOption
+                            $active={theme === "light"}
+                            onClick={() =>
+                                theme !== "light" &&
+                                toggleTheme()
+                            }
+                        >
+                            <Sun size={14} />
+                            Light
+                        </ThemeOption>
+
+                        <ThemeOption
+                            $active={theme === "dark"}
+                            onClick={() =>
+                                theme !== "dark" &&
+                                toggleTheme()
+                            }
+                        >
+                            <Moon size={14} />
+                            Dark
+                        </ThemeOption>
+                    </ThemeToggle>
+                </HeaderActions>
             </HeaderContent>
         </HeaderWrapper>
     );

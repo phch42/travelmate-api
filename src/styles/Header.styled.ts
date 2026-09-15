@@ -107,3 +107,9 @@ export const ThemeOption = styled.button<{ $active: boolean }>`
         background-color 0.2s ease,
         color 0.2s ease;
 `;
+
+export const HeaderActions = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+`;

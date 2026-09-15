@@ -1,9 +1,12 @@
 import MainLayout from "./layouts/MainLayout";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 function App() {
 
   return (
-    <MainLayout />
+    <LanguageProvider>
+      <MainLayout />
+    </LanguageProvider>
   )
 }
 
